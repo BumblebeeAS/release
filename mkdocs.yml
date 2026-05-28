@@ -1,0 +1,104 @@
+site_name: BlueROV Workspace
+site_description: ROS 2 + Gazebo simulation stack for the BlueROV2 — packages, architecture, and mission strategies.
+site_url: https://bluerov.example.com/
+repo_url: https://github.com/monkescripts/bluerov_ws
+repo_name: monkescripts/bluerov_ws
+edit_uri: edit/main/docs/
+
+theme:
+  name: material
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.expand
+    - navigation.indexes
+    - navigation.top
+    - navigation.tracking
+    - toc.follow
+    - content.code.copy
+    - content.code.annotate
+    - search.suggest
+    - search.highlight
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+  icon:
+    repo: fontawesome/brands/github
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+plugins:
+  - search
+
+nav:
+  - Home: index.md
+  - Overview:
+      - overview/index.md
+      - Architecture: overview/architecture.md
+      - Conventions: overview/conventions.md
+      - Running the sim: overview/running.md
+  - Packages:
+      - packages/index.md
+      - bluerov_sim: packages/bluerov_sim.md
+      - frames: packages/frames.md
+      - bb_msgs: packages/bb_msgs.md
+      - bb_worlds: packages/bb_worlds.md
+      - mission_planner_2: packages/mission_planner_2.md
+      - ardupilot_gazebo: packages/ardupilot_gazebo.md
+      - dave: packages/dave.md
+      - vision_pipeline: packages/vision_pipeline.md
+      - pose_estimator: packages/pose_estimator.md
+      - image_matching: packages/image_matching.md
+      - image_processing: packages/image_processing.md
+      - yolo_ros_trt: packages/yolo_ros_trt.md
+      - ml_models: packages/ml_models.md
+      - filters: packages/filters.md
+      - bring-up: packages/bring-up.md
+      - foxglove-sdk: packages/foxglove-sdk.md
+      - isaac-ros-docker: packages/isaac-ros-docker.md
+  - Strategies:
+      - strategies/index.md
+      - Square mission: strategies/square.md
+      - Bin drop: strategies/bin.md
+      - Torpedo launch: strategies/torpedo.md
+      - Primitives: strategies/primitives.md
