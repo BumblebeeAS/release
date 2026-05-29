@@ -1,7 +1,7 @@
 site_name: BlueROV Workspace
 site_description: ROS 2 + Gazebo simulation stack for the BlueROV2 — packages, architecture, and mission strategies.
 site_url: https://bluerov.example.com/
-repo_url: https://github.com/monkescripts/bluerov_ws
+repo_url: https://github.com/BumblebeeAS/ardusub-interface
 repo_name: monkescripts/bluerov_ws
 edit_uri: edit/main/docs/
 
