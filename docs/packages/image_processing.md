@@ -1,6 +1,6 @@
 # image_processing
 
-**Role:** Lightweight image transforms — brightness/sharpening, depth
+**Role:** Lightweight image transforms. Brightness/sharpening, depth
 visualisation, header restamping. Small utility nodes wired in front of
 perception when the raw camera stream needs adjusting.
 
@@ -12,7 +12,7 @@ perception when the raw camera stream needs adjusting.
 | `depth_to_rgb_node` | Colourmap visualisation of a `32FC1` depth map. |
 | `restamp_camera_node` | Rewrites `Image` / `CameraInfo` header timestamps (useful for sim-time replay). |
 
-## ROS interfaces — `image_brighten_node`
+## ROS interfaces. `image_brighten_node`
 
 | Direction | Topic | Type |
 |---|---|---|

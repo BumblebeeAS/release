@@ -74,6 +74,7 @@ nav:
   - Home: index.md
   - Overview:
       - overview/index.md
+      - Concepts (start here): overview/concepts.md
       - Architecture: overview/architecture.md
       - Conventions: overview/conventions.md
       - Running the sim: overview/running.md
@@ -83,7 +84,6 @@ nav:
       - frames: packages/frames.md
       - bb_msgs: packages/bb_msgs.md
       - bb_worlds: packages/bb_worlds.md
-      - mission_planner_2: packages/mission_planner_2.md
       - ardupilot_gazebo: packages/ardupilot_gazebo.md
       - dave: packages/dave.md
       - vision_pipeline: packages/vision_pipeline.md
@@ -95,7 +95,6 @@ nav:
       - filters: packages/filters.md
       - bring-up: packages/bring-up.md
       - foxglove-sdk: packages/foxglove-sdk.md
-      - isaac-ros-docker: packages/isaac-ros-docker.md
   - Strategies:
       - strategies/index.md
       - Square mission: strategies/square.md

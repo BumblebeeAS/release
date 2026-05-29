@@ -22,7 +22,7 @@ models resolve correctly.
 
 ## ROS interfaces
 
-None directly — this package only provides SDF + launch glue.
+None directly. This package only provides SDF + launch glue.
 
 ## Gotchas
 
@@ -35,5 +35,5 @@ None directly — this package only provides SDF + launch glue.
 
 ## See also
 
-- [bluerov_sim](bluerov_sim.md) — passes `world_name` to the world launch.
-- [Running the sim](../overview/running.md) — concrete launch invocations.
+- [bluerov_sim](bluerov_sim.md): passes `world_name` to the world launch.
+- [Running the sim](../overview/running.md): concrete launch invocations.

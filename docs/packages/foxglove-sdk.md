@@ -33,5 +33,5 @@ detections.
 
 ## See also
 
-- [Running the sim](../overview/running.md) — Foxglove launch and connection.
-- [yolo_ros_trt](yolo_ros_trt.md) — publishes `foxglove_msgs/ImageAnnotations`.
+- [Running the sim](../overview/running.md). Foxglove launch and connection.
+- [yolo_ros_trt](yolo_ros_trt.md): publishes `foxglove_msgs/ImageAnnotations`.

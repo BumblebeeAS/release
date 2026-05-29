@@ -7,11 +7,11 @@ TensorRT engines.
 
 | File | Purpose |
 |---|---|
-| `yolo_ros_trt/yolo_node.py` (`main`) | `LifecycleNode` — loads `.engine`, subscribes to image, publishes detections + annotations. |
+| `yolo_ros_trt/yolo_node.py` (`main`) | `LifecycleNode`. Loads `.engine`, subscribes to image, publishes detections + annotations. |
 | `yolo_ros_trt/tracking_node.py` (`main`) | Optional Ultralytics-tracker wrapper on top of detections. |
 | `yolo_ros_trt/utils/yolo_node_helper.py` | Conversion helpers to `yolo_msgs/DetectionArray`. |
 
-## ROS interfaces — `yolo_node`
+## ROS interfaces. `yolo_node`
 
 | Direction | Topic | Type |
 |---|---|---|
@@ -52,6 +52,6 @@ Models are stored in `.pt` form and exported to `.engine` once per host.
 
 ## See also
 
-- [ml_models](ml_models.md) — engine files.
-- [pose_estimator](pose_estimator.md) — consumes `yolo/detections`.
-- [filters](filters.md) — post-processes detections.
+- [ml_models](ml_models.md): engine files.
+- [pose_estimator](pose_estimator.md): consumes `yolo/detections`.
+- [filters](filters.md): post-processes detections.

@@ -4,7 +4,7 @@
 `ConvertToControlsPose` service that every BT leg goes through.
 
 The C++ side is header-only with template magic to make `ENUtoNED` /
-`NEDtoENU` / `ENUtoFLU` / `FLUtoFRD` (and more) static — wrong combinations
+`NEDtoENU` / `ENUtoFLU` / `FLUtoFRD` (and more) static. Wrong combinations
 fail at compile time. Compile-time unit tests run as part of `colcon build`.
 
 ## Key entrypoints
@@ -24,7 +24,7 @@ fail at compile time. Compile-time unit tests run as part of `colcon build`.
 | Service | `<ns>/convert_to_controls_pose` (e.g. `/bluerov/convert_to_controls_pose`) |
 | Service | `<ns>/dest_pose_from_tf` |
 
-The service contract is `bb_planner_msgs/GetPoseToControlsFrame.srv` — see
+The service contract is `bb_planner_msgs/GetPoseToControlsFrame.srv`. See
 [bb_msgs](bb_msgs.md).
 
 ## Conventions implemented
@@ -44,7 +44,7 @@ robot centre.
 
 ## See also
 
-- [Architecture](../overview/architecture.md) — where `ConvertToControlsPose`
+- [Architecture](../overview/architecture.md): where `ConvertToControlsPose`
   sits in the pipeline.
-- [bluerov_sim](bluerov_sim.md) — the action server that consumes the
+- [bluerov_sim](bluerov_sim.md): the action server that consumes the
   converted pose.

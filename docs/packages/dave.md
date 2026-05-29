@@ -31,6 +31,6 @@ on.
 
 ## See also
 
-- [bb_worlds](bb_worlds.md) — `dave_ocean_waves` is a DAVE-provided world.
+- [bb_worlds](bb_worlds.md). `dave_ocean_waves` is a DAVE-provided world.
 - [Conventions: DAVE underwater camera plugin](../overview/conventions.md#dave-underwater-camera-plugin)
   for the BGR/CameraInfo caveats in one place.

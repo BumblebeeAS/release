@@ -2,7 +2,7 @@
 
 **Role:** Turns 2D detections (YOLO masks, image-matching keypoints) into
 3D poses via PnP + RANSAC, and **broadcasts the result as a TF**. The TF
-broadcast is what `cluster_tf` consumes — not pose topics.
+broadcast is what `cluster_tf` consumes. Not pose topics.
 
 ## Per-task estimator nodes
 
@@ -60,7 +60,7 @@ Parameters: `object_frame_id`, `input_detections_topic`, `camera_info_topic`,
 
 ## See also
 
-- [yolo_ros_trt](yolo_ros_trt.md) — upstream detection source.
-- [image_matching](image_matching.md) — keypoint source for templated
+- [yolo_ros_trt](yolo_ros_trt.md): upstream detection source.
+- [image_matching](image_matching.md): keypoint source for templated
   tasks.
 - [Conventions: vision → cluster_tf integration](../overview/conventions.md#vision-cluster_tf-integration).

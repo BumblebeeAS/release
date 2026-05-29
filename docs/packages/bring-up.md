@@ -1,7 +1,7 @@
 # bring-up
 
 **Role:** Unified provisioning scripts for the AUV4.5 / UAV2 / ASV
-platforms — both real hardware (SBC + Orin) and the various simulation
+platforms. Both real hardware (SBC + Orin) and the various simulation
 environments.
 
 For the BlueROV2 workspace, the relevant pieces are the simulation
@@ -18,14 +18,14 @@ configurations under `etc/sim/`.
 
 ## ROS interfaces
 
-None — this is a pure provisioning package.
+None. This is a pure provisioning package.
 
 ## Gotchas
 
 - Needs `vcstool` to import dependencies, and SSH access to the private
   bumblebeeAS GitHub for those repos.
 - Real-hardware SBC bring-up uses systemd **user** services (non-root
-  startup) — different from a typical robot system service install.
+  startup): different from a typical robot system service install.
 - SSH key setup between SBC and Orin is a prerequisite for inter-board
   comms.
 - Orin setup runs **outside** Docker before first build; that affects
@@ -33,5 +33,5 @@ None — this is a pure provisioning package.
 
 ## See also
 
-- [Running the sim](../overview/running.md) — the BlueROV sim does not
+- [Running the sim](../overview/running.md): the BlueROV sim does not
   use this package directly; we run our own tmuxp mission files.

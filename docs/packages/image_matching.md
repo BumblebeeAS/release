@@ -41,7 +41,7 @@ torpedo) are sampled; a selector picks the one with more correspondences.
 
 - Object frame ID is derived from the template filename stem + `_optical`
   (e.g. `Task04_Tagging_01_optical`).
-- XFeat favours roughly upright cameras — large pitch/roll can degrade
+- XFeat favours roughly upright cameras. Large pitch/roll can degrade
   matching.
 - Internal homography is only used for warping template corners during
   annotation; it does not gate publishing.
@@ -49,7 +49,7 @@ torpedo) are sampled; a selector picks the one with more correspondences.
 
 ## See also
 
-- [pose_estimator](pose_estimator.md) — `points_pose_estimator_node`
+- [pose_estimator](pose_estimator.md). `points_pose_estimator_node`
   consumes the published correspondences.
 - [Bin mission](../strategies/bin.md), [Torpedo mission](../strategies/torpedo.md)
-  — concrete BT usage.
+ . Concrete BT usage.

@@ -1,6 +1,6 @@
 # ml_models
 
-**Role:** Asset repository for pre-trained models. No code — just weights
+**Role:** Asset repository for pre-trained models. No code. Just weights
 and exported engines, installed by `colcon` into `share/ml_models/`.
 
 ## Contents

@@ -25,14 +25,14 @@ upstream).
 
 ## Pipeline composition
 
-This package itself owns no perception logic — it composes:
+This package itself owns no perception logic. It composes:
 
-- [yolo_ros_trt](yolo_ros_trt.md) — segmentation
-- [pose_estimator](pose_estimator.md) — PnP → TF
-- [image_matching](image_matching.md) — XFeat correspondences
-- [image_processing](image_processing.md) — brighten / restamp
-- [filters](filters.md) — clustering / SORT3D
-- `aruco_loco`, `depth_anything_ros2_trt`, `custom_image_republisher` — auxiliary
+- [yolo_ros_trt](yolo_ros_trt.md): segmentation
+- [pose_estimator](pose_estimator.md). PnP → TF
+- [image_matching](image_matching.md). XFeat correspondences
+- [image_processing](image_processing.md): brighten / restamp
+- [filters](filters.md): clustering / SORT3D
+- `aruco_loco`, `depth_anything_ros2_trt`, `custom_image_republisher`. Auxiliary
 
 ## Gotchas
 
@@ -47,7 +47,7 @@ This package itself owns no perception logic — it composes:
 
 !!! warning "QoS mismatch"
     Image topics use `sensor_data` QoS (best-effort). Subscribers expecting
-    `reliable` QoS will not receive messages — this is the most common
+    `reliable` QoS will not receive messages. This is the most common
     silent-perception-failure mode.
 
 - All vision nodes run on the Orin in the real robot, consuming
@@ -56,5 +56,5 @@ This package itself owns no perception logic — it composes:
 
 ## See also
 
-- [Strategies](../strategies/index.md) — each BT mission starts its
+- [Strategies](../strategies/index.md): each BT mission starts its
   matching `vision_pipeline` task on entry and stops it on exit.
