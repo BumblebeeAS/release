@@ -1,41 +1,5 @@
 # Concepts
 
-If this is your first underwater-robotics project, this page is a survival
-glossary. Every other page assumes you've at least skimmed these terms.
-Read it linearly. Each concept builds on the previous.
-
-## ROS 2 in 90 seconds
-
-The Robot Operating System (ROS) isn't an OS. It's a **middleware** for
-distributed robot software. You run lots of small programs ("nodes")
-that talk to each other over a network. ROS 2 is the second major
-version; this workspace uses the **Humble** distribution.
-
-The four communication primitives you'll see everywhere:
-
-| Primitive | Shape | When to use | Example in this workspace |
-|---|---|---|---|
-| **Topic** | Pub / sub, one-way, streaming | High-rate data (images, IMU, odometry) | `/bluerov/odom`, `/bluerov/front_cam/image` |
-| **Service** | Request / response, blocking, one-shot | "Convert X for me right now" | `/bluerov/convert_to_controls_pose` |
-| **Action** | Request → feedback → result, long-running | "Drive to this pose; tell me when you arrive" | `/bluerov/controls` |
-| **Parameter** | Key-value config on a node | Tuning at launch / runtime | `use_sim_time`, `camera_info_topic` |
-
-!!! tip "How to inspect what's running"
-    Inside the container:
-
-    ```bash
-    ros2 node list           # which nodes are alive
-    ros2 topic list          # which topics exist
-    ros2 topic hz <topic>    # how often is it being published
-    ros2 topic echo <topic>  # print the messages
-    ros2 service list
-    ros2 action list
-    ros2 param list /<node>  # parameters of one node
-    ros2 run tf2_ros tf2_echo <parent> <child>  # check a TF
-    ```
-
-    These five commands solve ~80% of "why isn't this working" questions.
-
 ## Coordinate frames and TF
 
 A **frame** is a 3D coordinate system attached to something. The world,
@@ -44,22 +8,22 @@ relationships between frames in a tree called **TF** (transform).
 
 In this workspace:
 
-| Frame | What it's attached to | Convention |
-|---|---|---|
-| `map` | The simulated world origin | ENU. `+x` east, `+y` north, `+z` up |
-| `base_link` | The robot's body centre | FLU. `+x` forward, `+y` left, `+z` up |
-| `front_cam_optical` | Front camera, looking forward | Standard ROS optical: `+z` out of lens |
-| `bottom_cam_optical` | Bottom camera, looking down | Same |
-| `bin/yolo`, `torpedo/yolo`, `Task04_Tagging_01_optical`, … | Detected objects | Set by the pose estimator that broadcasts them |
+| Frame                                                      | What it's attached to         | Convention                                     |
+| ---------------------------------------------------------- | ----------------------------- | ---------------------------------------------- |
+| `map`                                                      | The simulated world origin    | ENU. `+x` east, `+y` north, `+z` up            |
+| `base_link`                                                | The robot's body centre       | FLU. `+x` forward, `+y` left, `+z` up          |
+| `front_cam_optical`                                        | Front camera, looking forward | Standard ROS optical: `+z` out of lens         |
+| `bottom_cam_optical`                                       | Bottom camera, looking down   | Same                                           |
+| `bin/yolo`, `torpedo/yolo`, `Task04_Tagging_01_optical`, … | Detected objects              | Set by the pose estimator that broadcasts them |
 
 The TF tree at any moment lets you answer: "where is *this* point, expressed in *that* frame?". Without anyone hand-coding the maths.
 
 !!! warning "Three frame conventions you must keep straight"
-    | Name | `+x` | `+y` | `+z` |
-    |---|---|---|---|
-    | **ENU** (East, North, Up): world / `map` | east | north | **up** |
-    | **NED** (North, East, Down): used by ArduSub internally | north | east | **down** |
-    | **FLU** (Forward, Left, Up): vehicle / `base_link` | forward | left | up |
+    | Name                                                    | `+x`    | `+y`  | `+z`     |
+    | ------------------------------------------------------- | ------- | ----- | -------- |
+    | **ENU** (East, North, Up): world / `map`                | east    | north | **up**   |
+    | **NED** (North, East, Down): used by ArduSub internally | north   | east  | **down** |
+    | **FLU** (Forward, Left, Up): vehicle / `base_link`      | forward | left  | up       |
 
     A 2 m forward goal in FLU is `(2, 0, 0)`. In NED that same direction
     might be `(0, 2, 0)` if the vehicle faces east. Mixing them up is
@@ -153,14 +117,14 @@ This workspace simulates a **BlueROV2**, an off-the-shelf ROV that runs
 the simulation talks to the firmware exactly the way a real vehicle
 would.
 
-| Term | What it is |
-|---|---|
-| **ArduPilot** | The open-source autopilot project (planes, copters, ROVs). |
-| **ArduSub** | ArduPilot's flavour for underwater vehicles. The actual firmware running on the BlueROV2. |
-| **SITL** (Software-in-the-Loop) | A native build of the firmware that runs on your PC instead of on the autopilot board. Same code, different target. We use `ArduSub SITL`. |
-| **MAVLink** | The lightweight serial protocol the firmware speaks. Used over UDP in sim. |
-| **MAVROS** | A ROS package that translates MAVLink ↔ ROS. So mission code in ROS doesn't have to speak MAVLink directly. |
-| **GUIDED mode** | ArduPilot's flight mode that accepts position-setpoint commands. The mission code arms the vehicle and switches it to GUIDED before sending setpoints. |
+| Term                            | What it is                                                                                                                                             |
+| ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **ArduPilot**                   | The open-source autopilot project (planes, copters, ROVs).                                                                                             |
+| **ArduSub**                     | ArduPilot's flavour for underwater vehicles. The actual firmware running on the BlueROV2.                                                              |
+| **SITL** (Software-in-the-Loop) | A native build of the firmware that runs on your PC instead of on the autopilot board. Same code, different target. We use `ArduSub SITL`.             |
+| **MAVLink**                     | The lightweight serial protocol the firmware speaks. Used over UDP in sim.                                                                             |
+| **MAVROS**                      | A ROS package that translates MAVLink ↔ ROS. So mission code in ROS doesn't have to speak MAVLink directly.                                            |
+| **GUIDED mode**                 | ArduPilot's flight mode that accepts position-setpoint commands. The mission code arms the vehicle and switches it to GUIDED before sending setpoints. |
 
 The hard rule: **mission code only talks to MAVROS**: never directly
 to ArduSub or Gazebo. That's what makes the same mission code work on
@@ -220,10 +184,10 @@ positions to throw out outliers (e.g. detections from before the
 vehicle yawed to face the panel), and broadcasts the average of the
 largest inlier cluster as a single new TF. The BT then uses *that*.
 
-| Input | Output |
-|---|---|
+| Input                        | Output                                      |
+| ---------------------------- | ------------------------------------------- |
 | `torpedo/yolo`. Noisy, 30 Hz | `torpedo/yolo/clustered`. Stable, single TF |
-| `bin/yolo`. Noisy, 30 Hz | `bin/yolo/clustered`. Stable, single TF |
+| `bin/yolo`. Noisy, 30 Hz     | `bin/yolo/clustered`. Stable, single TF     |
 
 You only see the input source frames when their broadcaster is alive
 *and* publishing. Missing input = clustering fails with "0 valid

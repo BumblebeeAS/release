@@ -1,4 +1,4 @@
-# Bin drop mission
+# Bin
 
 The bin task is a RoboSub staple: a square bin sits face-up on the
 pool floor with a picture (a "template") inside it. The vehicle has
@@ -212,19 +212,19 @@ vehicle needs to settle after the first drop kicks it around.
 
 ## Search / recovery patterns
 
-| Failure | Recovery |
-|---|---|
-| Cluster spread too loose on layer 1 | The outer search-`Selector` keeps re-clustering, or moves to layer 2 if `NUM_SQUARES > 1`. |
-| Unrotated template doesn't match | `Retry(100)` on the toggle + wait pair. |
-| Rotated template also doesn't match | `Retry(100)` on the rotated pair. (Both retries can give up. Then the selector falls through.) |
-| Goto-cluster fails (vehicle blew past, cluster went stale) | Re-cluster and retry up to `RETRIES=4` (`:453–466`). |
-| Whole main sequence fails | Outer selector falls to the blind drop: fire three droppers without alignment (`:617–657`). |
+| Failure                                                    | Recovery                                                                                       |
+| ---------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| Cluster spread too loose on layer 1                        | The outer search-`Selector` keeps re-clustering, or moves to layer 2 if `NUM_SQUARES > 1`.     |
+| Unrotated template doesn't match                           | `Retry(100)` on the toggle + wait pair.                                                        |
+| Rotated template also doesn't match                        | `Retry(100)` on the rotated pair. (Both retries can give up. Then the selector falls through.) |
+| Goto-cluster fails (vehicle blew past, cluster went stale) | Re-cluster and retry up to `RETRIES=4` (`:453–466`).                                           |
+| Whole main sequence fails                                  | Outer selector falls to the blind drop: fire three droppers without alignment (`:617–657`).    |
 
 ## Cluster_tf integration
 
-| Service | `/bluerov/cluster_tfs_srv` |
-|---|---|
-| TF inputs | `bin/yolo`, `Task03_DropBRUVS_optical`, `Task03_DropBRUVS_Rotated_optical` |
+| Service    | `/bluerov/cluster_tfs_srv`                                                 |
+| ---------- | -------------------------------------------------------------------------- |
+| TF inputs  | `bin/yolo`, `Task03_DropBRUVS_optical`, `Task03_DropBRUVS_Rotated_optical` |
 | TF outputs | `bin/yolo/clustered`, `bin/centre/view`, plus the per-template view frames |
 
 The TF-checker leg (`:220–231`) waits for `base_link → bin/centre/view`
@@ -240,9 +240,9 @@ frame before cluster_tf can collect samples. (See [Concepts:
 cluster_tf](../overview/concepts.md#cluster_tf-what-does-clustering-actually-do)
 for a refresher.)
 
-| Source TF | Broadcaster (node) | Package |
-|---|---|---|
-| `bin/yolo` | `bin_pose_estimator_node` (`PoseEstimatorTransformPubNode`) | [pose_estimator](../packages/pose_estimator.md) |
+| Source TF                                                         | Broadcaster (node)                                                                                       | Package                                         |
+| ----------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | ----------------------------------------------- |
+| `bin/yolo`                                                        | `bin_pose_estimator_node` (`PoseEstimatorTransformPubNode`)                                              | [pose_estimator](../packages/pose_estimator.md) |
 | `Task03_DropBRUVS_optical` and `Task03_DropBRUVS_Rotated_optical` | `points_pose_estimator_node`. Consumes `image_matching/point_correspondences` from `simple_matcher_node` | [pose_estimator](../packages/pose_estimator.md) |
 
 All broadcasters are launched by `bluerov_bin_vision.launch.py`.
