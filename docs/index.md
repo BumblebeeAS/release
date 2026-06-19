@@ -1,116 +1,45 @@
-# BlueROV Workspace
+# BumblebeeAS software stack
 
-A ROS 2 Humble + Gazebo Harmonic simulation stack for the **BlueROV2**.
-The design constraint shaping the whole repo: **mission code is
-identical between simulation and the real vehicle**.
+We build software for autonomous underwater, surface, and aerial robots. Our stack spans mission planning, perception, controls, simulation, sensor integration, and developer tooling.
 
-The full pipeline:
+## Mission planning and shared interfaces
 
-``` mermaid
-flowchart LR
-  GZ[Gazebo Harmonic] <-- JSON/UDP --> AP[ArduPilot Gazebo plugin]
-  AP <--> SITL[ArduSub SITL]
-  SITL <-- MAVLink --> MR[MAVROS]
-  MR <-- ROS 2 --> MISSION[Mission BT / action server]
-```
+| Repository                                                                          | What it does                                                                  |
+| ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| [`bb_msgs`](https://github.com/BumblebeeAS/bb_msgs)                                 | Shared ROS messages, services, and actions.                                   |
+| [`frames`](https://github.com/BumblebeeAS/frames)                                   | Compile-time frame types to make coordinate conversions safer.                |
+| [`mission_planner_release`](https://github.com/BumblebeeAS/mission_planner_release) | py_trees-based mission-planning stack and reusable behaviour-tree primitives. |
 
-ArduSub SITL runs the **same firmware** as the physical BlueROV2, so
-the MAVROS mission code on top is portable to hardware without
-changes.
+## Perception
 
-## New here? Read in this order
+| Repository                                                                          | What it does                                                  |
+| ----------------------------------------------------------------------------------- | ------------------------------------------------------------- |
+| [`accelerated_features`](https://github.com/BumblebeeAS/accelerated_features)       | XFeat implementation for fast local feature extraction.       |
+| [`depth-anything-tensorrt`](https://github.com/BumblebeeAS/depth-anything-tensorrt) | TensorRT inference for Depth Anything V1 and V2.              |
+| [`filters`](https://github.com/BumblebeeAS/filters)                                 | Detection filtering and pose clustering for stable targets.   |
+| [`image_matching`](https://github.com/BumblebeeAS/image_matching)                   | Local-feature matching against known targets.                 |
+| [`image_processing`](https://github.com/BumblebeeAS/image_processing)               | ROS 2 utilities for image enhancement and timestamp handling. |
+| [`pose_estimator`](https://github.com/BumblebeeAS/pose_estimator)                   | Vision-based 6-DoF target-pose estimation and TF publication. |
+| [`vision_pipeline`](https://github.com/BumblebeeAS/vision_pipeline)                 | Launch files and utilities for orchestrating vision nodes.    |
+| [`yolo_ros_trt`](https://github.com/BumblebeeAS/yolo_ros_trt)                       | ROS 2 object-detection wrapper for YOLO and TensorRT.         |
 
-1. **[Overview → Concepts](overview/concepts.md)**: survival glossary
-   for newcomers. ROS 2 primitives, TF, behaviour trees, MAVROS,
-   ArduSub, cluster_tf, anchor frames. Read first if any of those
-   look unfamiliar.
-2. **[Overview → Architecture](overview/architecture.md)**: the
-   layered pipeline above, expanded layer by layer. Closed-loop
-   feedback, key invariants, anchor-frame pattern.
-3. **[Overview → Running the sim](overview/running.md)**: Docker
-   setup, tmuxp missions, diagnostic commands.
-4. **[Strategies → Square](strategies/square.md)**: the simplest
-   end-to-end mission. Read the code alongside; it's the smallest
-   thing in the repo that exercises the whole pipeline.
-5. **[Strategies → Primitives](strategies/primitives.md)**: `goto`,
-   the action server, the search builders. Vocabulary every mission
-   uses.
-6. **[Strategies → Bin](strategies/bin.md)** and
-   **[Torpedo](strategies/torpedo.md)**: the perception-driven
-   missions. Read after Square + Primitives.
-7. **[Packages](packages/index.md)**: one page per `src/` package.
-   Reach for these when you want to know what a specific dependency
-   does or how to extend it.
+## Simulation
 
-## Where to start by background
+| Repository                                                  | What it does                                                 |
+| ----------------------------------------------------------- | ------------------------------------------------------------ |
+| [`ardusub_sim`](https://github.com/BumblebeeAS/ardusub_sim) | ArduSub and Gazebo simulation, built on Project DAVE.        |
+| [`bb_worlds`](https://github.com/BumblebeeAS/bb_worlds)     | Gazebo worlds and assets for vehicles and competition tasks. |
 
-<div class="grid cards" markdown>
+## Developer platforms and tooling
 
--   :material-school:{ .lg .middle } **Brand-new to robotics**
+| Repository                                                                                        | What it does                                                   |
+| ------------------------------------------------------------------------------------------------- | -------------------------------------------------------------- |
+| [`controlkitv3`](https://github.com/BumblebeeAS/controlkitv3)                                     | Foxglove-based interface for vehicle control and telemetry.    |
+| [`isaac-ros-docker`](https://github.com/BumblebeeAS/isaac-ros-docker)                             | Docker tooling for Isaac ROS on legacy JetPack 6 Orin systems. |
+| [`release`](https://github.com/BumblebeeAS/release)                                               | Source for this documentation site and public release notes.   |
+| [`ros-humble-noetic-bridge`](https://github.com/BumblebeeAS/ros-humble-noetic-bridge)             | Ready-to-use bridge between ROS Noetic and ROS 2 Humble.       |
+| [`ros-humble-ros1-bridge-builder`](https://github.com/BumblebeeAS/ros-humble-ros1-bridge-builder) | Builder for producing a Humble–ROS 1 bridge package.           |
 
-    ---
+## Examples
 
-    Start with [Concepts](overview/concepts.md). Then read
-    [Architecture](overview/architecture.md) and
-    [Square mission](strategies/square.md) side by side with the
-    source.
-
--   :material-rocket:{ .lg .middle } **ROS-savvy but new to RoboSub**
-
-    ---
-
-    Skim [Architecture](overview/architecture.md), then jump straight
-    to [Strategies](strategies/index.md) for what each competition
-    mission actually does.
-
--   :material-wrench:{ .lg .middle } **Extending a specific package**
-
-    ---
-
-    [Packages](packages/index.md) has one focused page per `src/`
-    package. Conventions for new BT legs are in
-    [Conventions](overview/conventions.md).
-
-</div>
-
-## Workspace layout at a glance
-
-```
-bluerov_ws/
-├── build.bash / run.bash       # docker image + rocker wrapper
-├── bluerov_*.yaml              # tmuxp mission launchers (one per task)
-├── bluerov_ws.repos            # vcs-imported external packages (pinned)
-└── src/
-    ├── bluerov_sim/            # orchestrator: SDF + URDF + launch + action server + BT
-    ├── frames/                 # frame conversion library + ConvertToControlsPose
-    ├── bb_msgs/                # Locomotion.action, GetPoseToControlsFrame.srv, perception msgs
-    ├── bb_worlds/              # competition worlds (RoboSub 2023/2025, SAUVC, …)
-    ├── ardupilot_gazebo/       # JSON-UDP bridge plugin (Gazebo ↔ ArduSub SITL)
-    ├── dave/                   # DAVE underwater sim ecosystem (sensor plugins, DVL msg types)
-    ├── vision_pipeline/        # perception lifecycle orchestration
-    ├── pose_estimator/         # vision → TF broadcasters
-    ├── image_matching/         # XFeat template matching
-    ├── image_processing/       # brighten / restamp / utils
-    ├── yolo_ros_trt/           # YOLOv11 + TensorRT (or PyTorch fallback)
-    ├── ml_models/              # YOLO weights + Depth-Anything ONNX assets
-    ├── filters/                # cluster_tf (TFs + Poses)
-    ├── bring-up/               # robot bring-up entrypoints
-    └── foxglove-sdk/           # foxglove bridge (manually cloned)
-```
-
-## What this is *not*
-
-- Not a generic ROS 2 starter. Assumes Humble, Gazebo Harmonic, and
-  the BlueROV2 model specifically.
-- Not a tutorial for ArduSub or QGroundControl. Those are upstream
-  tools used as-is. We link to their docs where relevant.
-- Not an SDK for "your own AUV". Re-targeting to a different vehicle
-  is a real project (new SDF, new URDF, new thruster layout, new
-  ArduPilot params).
-
-## Anything that surprised you?
-
-If a concept on this site reads like jargon, that's a doc bug. The
-[Concepts](overview/concepts.md) page is supposed to translate every
-piece of vocabulary the other pages use. PRs / issues welcome on the
-repo linked at the top right.
+See [`BumblebeeAS/examples`](https://github.com/BumblebeeAS/examples) for example end-to-end demos.

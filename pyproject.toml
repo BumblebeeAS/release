@@ -8,4 +8,5 @@ dependencies = [
     # mkdocs-material is listed as a fallback so
     # `mkdocs serve` works too.
     "mkdocs-material>=9.5",
+    "mkdocs-glightbox>=0.4",
 ]

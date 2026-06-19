@@ -1,10 +1,10 @@
 # Bumblebee Releases Documentation Site
 
-Documentation for Bumblebee's public releases.
+Documentation for BumblebeeAS's software stack.
 
 ## Local development
 
-Setup the virtual environment:
+Set up the environment:
 
 ```bash
 python3 -m venv bb_release
@@ -12,13 +12,13 @@ source bb_release/bin/activate
 pip install -r requirements.txt
 ```
 
-Serve with:
+Serve locally:
 
 ```bash
 zensical serve
 ```
 
-or
+or:
 
 ```bash
 mkdocs serve
