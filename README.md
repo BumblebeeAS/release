@@ -1,18 +1,25 @@
-# BlueROV Workspace — Documentation Site
+# Bumblebee Releases Documentation Site
 
-Source for the BlueROV2 ROS 2 + Gazebo documentation site. Built with
-[Zensical](https://zensical.org) (drop-in compatible with Material for MkDocs,
-so `mkdocs serve` also works).
+Documentation for Bumblebee's public releases.
 
 ## Local development
 
-```bash
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
+Setup the virtual environment:
 
-# Live-reloading dev server on http://localhost:8000
+```bash
+python3 -m venv bb_release
+source bb_release/bin/activate
+pip install -r requirements.txt
+```
+
+Serve with:
+
+```bash
 zensical serve
-# or, equivalently:
+```
+
+or
+
+```bash
 mkdocs serve
 ```

@@ -1,3 +1,4 @@
+bb_release/
 .venv/
 venv/
 __pycache__/

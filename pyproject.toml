@@ -1,11 +1,11 @@
 [project]
-name = "bluerov-website"
+name = "bb-releases-doc-site"
 version = "0.1.0"
-description = "Documentation site for the BlueROV ROS 2 + Gazebo workspace."
+description = "Documentation for Bumblebee's public releases."
 requires-python = ">=3.10"
 dependencies = [
     "zensical>=0.0.43",
-    # Zensical is mkdocs-compatible. mkdocs-material is listed as a fallback so
-    # `mkdocs serve` works even if a contributor hasn't installed zensical yet.
+    # mkdocs-material is listed as a fallback so
+    # `mkdocs serve` works too.
     "mkdocs-material>=9.5",
 ]

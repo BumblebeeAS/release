@@ -1,8 +1,8 @@
-site_name: BlueROV Workspace
-site_description: ROS 2 + Gazebo simulation stack for the BlueROV2 — packages, architecture, and mission strategies.
+site_name: BumblebeeAS Docs
+site_description: Documentation for Bumblebee's public releases.
 site_url: https://bumblebeeas.github.io/release/
-repo_url: https://github.com/BumblebeeAS/ardusub-interface
-repo_name: monkescripts/bluerov_ws
+repo_url: https://github.com/BumblebeeAS/release
+repo_name: BumblebeeAS/release
 edit_uri: edit/main/docs/
 
 theme:
