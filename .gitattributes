@@ -1,0 +1,4 @@
+docs/assets/**/*.gif filter=lfs diff=lfs merge=lfs -text
+docs/assets/**/*.mp4 filter=lfs diff=lfs merge=lfs -text
+docs/assets/**/*.webm filter=lfs diff=lfs merge=lfs -text
+docs/assets/**/*.mov filter=lfs diff=lfs merge=lfs -text
