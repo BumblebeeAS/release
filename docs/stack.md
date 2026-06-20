@@ -1,5 +1,8 @@
 # BumblebeeAS Software Stack Overview
 
+This page contains an overview of our vehicle software architectures and maps out the individual Git repositories.
+See the README of each repository for further information.
+
 ## AUV architecture
 
 ```mermaid
@@ -212,7 +215,7 @@ flowchart LR
 | [`ardusub_sim`](https://github.com/BumblebeeAS/ardusub_sim) | ArduSub and Gazebo simulation, built on Project DAVE.        |
 | [`bb_worlds`](https://github.com/BumblebeeAS/bb_worlds)     | Gazebo worlds and assets for vehicles and competition tasks. |
 
-## Developer platforms and tooling
+## Developer Platforms and Tooling
 
 | Repository                                                                                        | What it does                                                   |
 | ------------------------------------------------------------------------------------------------- | -------------------------------------------------------------- |

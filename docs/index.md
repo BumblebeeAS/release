@@ -1,7 +1,5 @@
 # BumblebeeAS Open Source
 
-## About Us
-
 [Bumblebee Autonomous Systems](https://bumblebee.sg) is an undergraduate robotics team from the National University of Singapore that designs and builds autonomous maritime vehicles.
 
 We build software for autonomous underwater, surface, and aerial robots. Our stack spans mission planning, perception, controls, simulation, sensor integration, and developer tooling.
