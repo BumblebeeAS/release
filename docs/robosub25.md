@@ -143,4 +143,4 @@ DVL becomes noisy near the table.
 
 We exercised the same perception and mission concepts in simulation before
 pool testing. We list our public simulation components on the
-[software stack overview](index.md#simulation).
+[software stack overview](stack.md#simulation).
