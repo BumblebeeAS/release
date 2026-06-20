@@ -12,6 +12,27 @@ We build software for autonomous underwater, surface, and aerial robots. Our sta
 
 ## Perception
 
+```mermaid
+flowchart LR
+  subgraph VISION["Vision Pipeline"]
+    direction LR
+
+    CAM["Camera"]
+    IMG["Image Processing"]
+    MATCH["Image Matching"]
+    YOLO["YOLO"]
+    DEPTH["Depth Estimation"]
+    POSE["Pose Estimator"]
+
+    CAM --> IMG --> MATCH --> POSE
+    CAM --> YOLO --> POSE
+    CAM --> DEPTH --> POSE
+  end
+
+  POSE --> CLUSTER["Pose Clustering (Filters)"]
+  CLUSTER --> BT["Mission Planner"]
+```
+
 | Repository                                                                          | What it does                                                  |
 | ----------------------------------------------------------------------------------- | ------------------------------------------------------------- |
 | [`accelerated_features`](https://github.com/BumblebeeAS/accelerated_features)       | XFeat implementation for fast local feature extraction.       |
