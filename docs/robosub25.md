@@ -6,6 +6,8 @@ the underwater maritime industry. These challenges may include oceanographic
 exploration and mapping, detection and manipulation of objects, and pipeline
 identification and tracking.
 
+## Competition Tasks
+
 <div class="grid cards" markdown>
 
 -   <figure markdown>
@@ -20,7 +22,7 @@ identification and tracking.
 
 </div>
 
-## Bin
+### Bin
 
 **Task:** The AUV is to drop two markers on the half of the bin corresponding
 to a specified animal.
@@ -61,7 +63,7 @@ correspondences gives us the 6-DoF poses of the centers of the animals.
           allowfullscreen></iframe>
 </div>
 
-## Slalom
+### Slalom
 
 **Task:** The AUV is to navigate the channel of white and red vertical PVC
 pipes while staying on the same side of the red pipe when it passed through
@@ -84,7 +86,7 @@ relative depth values are obtained from a monocular depth model.
           allowfullscreen></iframe>
 </div>
 
-## Torpedoes
+### Torpedoes
 
 **Task:** The AUV is to detect the animals on the target and "tag" them in a
 specified order by firing torpedoes through the respective openings. More
@@ -113,7 +115,7 @@ during our finals run.)
           allowfullscreen></iframe>
 </div>
 
-## Ocean Cleanup
+### Ocean Cleanup
 
 **Task:** The AUV is to sort objects into baskets of opposing colors. After
 picking up each sample, it must surface before depositing it.
@@ -144,3 +146,7 @@ DVL becomes noisy near the table.
 We exercised the same perception and mission concepts in simulation before
 pool testing. We list our public simulation components on the
 [software stack overview](stack.md#simulation).
+
+## YOLO Models
+
+We have also published our YOLO models for RoboSub 2025 [here](https://huggingface.co/BumblebeeAS)

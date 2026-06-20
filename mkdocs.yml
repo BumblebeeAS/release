@@ -83,6 +83,31 @@ plugins:
 extra_css:
   - stylesheets/extra.css
 
+extra:
+  social:
+    - icon: fontawesome/solid/globe
+      link: https://bumblebee.sg
+      name: Main Website
+    - icon: fontawesome/brands/github
+      link: https://github.com/BumblebeeAS
+      name: GitHub Organization
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/company/nus-bbas/
+      name: LinkedIn
+    - icon: fontawesome/brands/instagram
+      link: https://www.instagram.com/nus_bbas/
+      name: Instagram
+    - icon: fontawesome/brands/youtube
+      link: https://www.youtube.com/@Bbauv
+      name: YouTube
+    - icon: fontawesome/solid/envelope
+      link: mailto:hello@bumblebee.sg
+      name: Email Us
+    - icon: fontawesome/brands/hugging-face
+      link: https://huggingface.co/BumblebeeAS
+      name: Hugging Face
+
 nav:
-  - Software stack: index.md
+  - Overview: index.md
+  - Software Stack: stack.md
   - RoboSub 2025: robosub25.md
