@@ -149,4 +149,4 @@ pool testing. We list our public simulation components on the
 
 ## YOLO Models
 
-We have also published our YOLO models for RoboSub 2025 [here](https://huggingface.co/BumblebeeAS)
+We have also published our YOLO models for RoboSub 2025 [here](https://huggingface.co/BumblebeeAS).
