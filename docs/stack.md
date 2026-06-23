@@ -210,15 +210,19 @@ flowchart LR
 
 ## Simulation
 
-| Repository                                                  | What it does                                                 |
-| ----------------------------------------------------------- | ------------------------------------------------------------ |
-| [`ardusub_sim`](https://github.com/BumblebeeAS/ardusub_sim) | ArduSub and Gazebo simulation, built on Project DAVE.        |
-| [`bb_worlds`](https://github.com/BumblebeeAS/bb_worlds)     | Gazebo worlds and assets for vehicles and competition tasks. |
+| Repository                                                            | What it does                                                          |
+| --------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| [`ardusub_sim`](https://github.com/BumblebeeAS/ardusub_sim)           | ArduSub and Gazebo simulation, built on Project DAVE.                |
+| [`bb_led_plugin`](https://github.com/BumblebeeAS/bb_led_plugin)       | Gazebo plugin simulating LEDs with runtime-switchable modes (patterns, colors). |
+| [`bb_worlds`](https://github.com/BumblebeeAS/bb_worlds)               | Gazebo worlds and assets for vehicles and competition tasks.         |
+| [`examples`](https://github.com/BumblebeeAS/examples)                 | End-to-end demos and quick-start workspaces built on our simulators. |
+| [`multivehicle_sim`](https://github.com/BumblebeeAS/multivehicle_sim) | Multi-vehicle Gazebo simulation running an ASV, UAV, and AUV together. |
 
 ## Developer Platforms and Tooling
 
 | Repository                                                                                        | What it does                                                   |
 | ------------------------------------------------------------------------------------------------- | -------------------------------------------------------------- |
+| [`bb_robotx_dashboard`](https://github.com/BumblebeeAS/bb_robotx_dashboard)                       | Web operations dashboard for tracking RobotX vehicles live.    |
 | [`controlkitv3`](https://github.com/BumblebeeAS/controlkitv3)                                     | Foxglove-based interface for vehicle control and telemetry.    |
 | [`isaac-ros-docker`](https://github.com/BumblebeeAS/isaac-ros-docker)                             | Docker tooling for Isaac ROS on legacy JetPack 6 Orin systems. |
 | [`release`](https://github.com/BumblebeeAS/release)                                               | Source for this documentation site and public release notes.   |
