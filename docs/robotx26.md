@@ -26,7 +26,7 @@ Our RobotX 2026 effort is built around a shared Gazebo simulation that runs an
 Autonomous Surface Vehicle (ASV), an Unmanned Aerial Vehicle (UAV), and an
 Autonomous Underwater Vehicle (AUV) together in one world — a model of the
 Singapore river competition course. All three vehicles are spawned into the
-same scene and bridged into ROS 2, so they share a common clock, coordinate
+same scene and connected to ROS 2, so they share a common clock, coordinate
 frames, and message bus exactly as they would on the water.
 
 The simulator and a set of end-to-end demos are public:
@@ -65,7 +65,7 @@ information back to the surface vehicle.
 
 The BlueROV2 runs ArduSub with MAVROS, mirroring the underwater platform's real
 autopilot interface. A scripted square-dive mission demonstrates depth-holding
-and waypoint navigation underwater, the foundation for the submerged portions of
+and waypoint navigation underwater, the foundation for the underwater elements of
 the challenge.
 
 ## Tooling and Integration
@@ -78,9 +78,9 @@ infrastructure as an integrated system:
 - **Odometry bridges** publish each vehicle's pose into ROS 2, so missions and
   visualization tools see a consistent picture of the whole fleet.
 - **An operations dashboard** tracks all three vehicles' odometry on a live web
-  view, approximating the shore-side situational awareness we rely on at the
+  view, simulating the shore-side situation we rely on at the
   competition.
-- **Foxglove** provides deep, real-time introspection of topics and transforms
+- **Foxglove** provides real-time introspection of topics and transforms
   during development and debugging.
 
 More details, results, and on-water footage will be added here as our RobotX
