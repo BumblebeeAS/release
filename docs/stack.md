@@ -215,8 +215,7 @@ flowchart LR
 | [`ardusub_sim`](https://github.com/BumblebeeAS/ardusub_sim)           | ArduSub and Gazebo simulation, built on Project DAVE.                |
 | [`bb_led_plugin`](https://github.com/BumblebeeAS/bb_led_plugin)       | Gazebo plugin simulating LEDs with runtime-switchable modes (patterns, colors). |
 | [`bb_worlds`](https://github.com/BumblebeeAS/bb_worlds)               | Gazebo worlds and assets for vehicles and competition tasks.         |
-| [`examples`](https://github.com/BumblebeeAS/examples)                 | End-to-end demos and quick-start workspaces built on our simulators. |
-| [`multivehicle_sim`](https://github.com/BumblebeeAS/multivehicle_sim) | Multi-vehicle Gazebo simulation running an ASV, UAV, and AUV together. |
+| [`examples`](https://github.com/BumblebeeAS/examples)                 | Our simulators and the end-to-end demos built on them — including the multi-vehicle Gazebo sim running an ASV, UAV, and AUV together. |
 
 ## Developer Platforms and Tooling
 

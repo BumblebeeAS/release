@@ -29,14 +29,11 @@ Singapore river competition course. All three vehicles are spawned into the
 same scene and connected to ROS 2, so they share a common clock, coordinate
 frames, and message bus exactly as they would on the water.
 
-The simulator and a set of end-to-end demos are public:
-
-- [`BumblebeeAS/multivehicle_sim`](https://github.com/BumblebeeAS/multivehicle_sim)
-  — the shared world, vehicle models, and the Gazebo ↔ ROS 2 bridges.
-- [`BumblebeeAS/examples`](https://github.com/BumblebeeAS/examples) — example
-  missions and controllers that run on top of the simulator (the
-  `multivehicle` project), launchable as a full stack with a single tmuxp
-  session.
+The simulator and a set of end-to-end demos are public in
+[`BumblebeeAS/examples`](https://github.com/BumblebeeAS/examples) — the shared
+world, vehicle models and Gazebo ↔ ROS 2 bridges, together with the missions and
+controllers that run on top of them (the `multivehicle` project), launchable as a
+full stack with a single tmuxp session.
 
 | Vehicle | Platform | Stack |
 |---------|----------|-------|
